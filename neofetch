@@ -1522,7 +1522,7 @@ get_packages() {
             has kiss       && tot kiss l
             has cpt-list   && tot cpt-list
             has pacman-key && tot pacman -Qq --color never
-            has apt        && tot apt list
+            has apt        && pkgs_h=1 tot apt list --installed && ((packages-=1))
             has rpm        && tot rpm -qa
             has xbps-query && tot xbps-query -l
             has apk        && tot apk info
@@ -1646,7 +1646,7 @@ get_packages() {
             has pkgman && dir /boot/system/package-links/*
             packages=${packages/pkgman/depot}
 	;;
-
+	
         IRIX)
             manager=swpkg
             pkgs_h=3 tot versions -b && ((packages-=3))
